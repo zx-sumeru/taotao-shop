@@ -11,7 +11,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class TaotaoResult {
 
     // 定义jackson对象
-    private static final ObjectMapper MAPPER = new ObjectMapper();
+    private static final ObjectMapper MAPPER = new ObjectMapper(); // TODO: by ZX 2018/8/8 16:29 :: 可以考虑改用fsatjson实现
+
+    public static final int OK = 200;
 
     // 响应业务状态
     private Integer status;
@@ -21,6 +23,23 @@ public class TaotaoResult {
 
     // 响应中的数据
     private Object data;
+
+    public TaotaoResult() {
+    }
+
+    public TaotaoResult(Integer status, String msg, Object data) {
+        this.status = status;
+        this.msg = msg;
+        this.data = data;
+    }
+
+    public TaotaoResult(Object data) {
+        this(200,"OK", data);
+    }
+
+    public static TaotaoResult build(Integer status, String msg) {
+        return new TaotaoResult(status, msg, null);
+    }
 
     public static TaotaoResult build(Integer status, String msg, Object data) {
         return new TaotaoResult(status, msg, data);
@@ -32,26 +51,6 @@ public class TaotaoResult {
 
     public static TaotaoResult ok() {
         return new TaotaoResult(null);
-    }
-
-    public TaotaoResult() {
-
-    }
-
-    public static TaotaoResult build(Integer status, String msg) {
-        return new TaotaoResult(status, msg, null);
-    }
-
-    public TaotaoResult(Integer status, String msg, Object data) {
-        this.status = status;
-        this.msg = msg;
-        this.data = data;
-    }
-
-    public TaotaoResult(Object data) {
-        this.status = 200;
-        this.msg = "OK";
-        this.data = data;
     }
 
 //    public Boolean isOK() {

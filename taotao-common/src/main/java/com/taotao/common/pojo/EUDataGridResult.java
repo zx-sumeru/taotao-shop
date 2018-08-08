@@ -2,6 +2,10 @@ package com.taotao.common.pojo;
 
 import java.util.List;
 
+/**
+ * Easyui中datagrid控件要求的数据格式:
+ * 		{total:”2”,rows:[{“id”:”1”,”name”,”张三”},{“id”:”2”,”name”,”李四”}]}
+ */
 public class EUDataGridResult {
 
 	private long total;

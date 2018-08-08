@@ -3,6 +3,7 @@ package com.taotao.service.impl;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.http.HttpStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -104,6 +105,7 @@ public class ItemServiceImpl implements ItemService {
 		//添加规格参数
 		result = insertItemParamItem(itemId, itemParam);
 		if (result.getStatus() != 200) {
+		//if (result.getStatus() != TaotaoResult.OK) {
 			throw new Exception();
 		}
 		return TaotaoResult.ok();

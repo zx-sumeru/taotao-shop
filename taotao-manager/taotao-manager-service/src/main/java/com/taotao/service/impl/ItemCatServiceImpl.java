@@ -27,6 +27,7 @@ public class ItemCatServiceImpl implements ItemCatService {
 
 	@Autowired
 	private TbItemCatMapper itemCatMapper;
+	@SuppressWarnings("Duplicates")	
 	@Override
 	public List<EUTreeNode> getCatList(long parentId) {
 		
